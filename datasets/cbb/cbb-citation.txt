@@ -1,0 +1,50 @@
+To cite the datasets please use the original articles.
+If need to cite the entire page use this BibTex
+
+@misc{ClusteringDatasets,
+    author = {Pasi Fr\"anti and Sami Sieranoja},
+    title = {K-means properties on six clustering benchmark datasets},
+    year = {2018},
+    volume  = {48},
+    number  = {12},
+    pages   = {4743--4759},
+    url = {http://cs.uef.fi/sipu/datasets/},
+}
+
+
+A-sets:
+@TECHREPORT{Asets,
+  author = {I. K\"arkk\"ainen and P. Fr\"anti},
+  title = {Dynamic local search algorithm for the clustering problem},
+  institution = {Department of Computer Science, University of Joensuu},
+  address = {Joensuu, Finland},
+  number = {A-2002-6},
+  year = {2002}
+}
+
+
+S-sets:
+@article{Ssets,
+    author  = {P. Fr\"anti and O. Virmajoki},
+    title   = {Iterative shrinking method for clustering problems},
+    journal = {Pattern Recognition},
+    year    = {2006},
+    volume  = {39},
+    number  = {5},
+    pages   = {761--765},
+    doi     = {10.1016/j.patcog.2005.09.012},
+    url     = {http://dx.doi.org/10.1016/j.patcog.2005.09.012}
+}
+
+
+Unbalance:
+@article{UnbalanceSet,
+    author = {M. Rezaei and P. Fr\"anti},
+    title = {Set-matching methods for external cluster validity},
+    journal = {IEEE Trans. on Knowledge and Data Engineering},
+    year = {2016},
+    volume = {28},
+    number = {8},
+    pages = {2173--2186}
+}
+
