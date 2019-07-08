@@ -1,5 +1,6 @@
-function load_CLRES(handles)
+function err = load_CLRES(handles)
 %LOAD_CLRES load a .mat file generated using this GUI
+    err = 0;
     [dfile,dpath] = uigetfile({'*.mat'},'File Selector');
     if isequal(dfile,0)      
         return
@@ -8,6 +9,7 @@ function load_CLRES(handles)
         if ~exist('CL_RESULTS','var') || ~exist('DATA','var') || ~exist('PARAMS','var') ||...
             ~exist('EXTRAS','var') || ~exist('ORIGINAL_DATA','var')
             errordlg('Wrong file','Error');
+            err = 1;
             return
         end
     end
@@ -61,11 +63,14 @@ function load_CLRES(handles)
         end    
         tmp = str2num(get(handles.s_step,'String'));
         i = find((tmp==st)==1);
-        set(handles.s_step,'Value',i);
+        if ~isempty(i)
+            set(handles.s_step,'Value',i);
+        end
     end
     
-    set(handles.run_clustering,'UserData',{CL_RESULTS,DATA,PARAMS,EXTRAS});
-
+    ORIGINAL_DATA = get(handles.button_load,'UserData');
+    set(handles.run_clustering,'UserData',{CL_RESULTS,DATA,PARAMS,EXTRAS,ORIGINAL_DATA});
+    
     myGUI = findobj(handles.clustering_gui,'Enable','off');
     set(myGUI,'Enable','on');
 end

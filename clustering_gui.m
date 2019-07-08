@@ -22,7 +22,7 @@ function varargout = clustering_gui(varargin)
 
 % Edit the above text to modify the response to help clustering_gui
 
-% Last Modified by GUIDE v2.5 04-Jul-2019 20:08:29
+% Last Modified by GUIDE v2.5 07-Jul-2019 11:11:16
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -102,6 +102,7 @@ function button_load_Callback(hObject, eventdata, handles)
     set(handles.plotDim3,'enable','on');
     set(handles.dataset_norm,'enable','on');    
     % Update GUI
+    set(handles.run_clustering,'UserData','');
     gui_update(handles)    
     activate_s(hObject, eventdata, handles)
     % Plot
@@ -208,7 +209,8 @@ function run_clustering_Callback(hObject, eventdata, handles)
     [CL_RESULTS,DATA,PARAMS,EXTRAS] = clustering_exe(method_norm,method_centers,method_cluster,x,KS,SS);
     fdata = get(handles.dataset_feats,'Data');
     PARAMS.UI = {fdata,method_norm,method_centers,method_cluster};
-    set(handles.run_clustering,'UserData',{CL_RESULTS,DATA,PARAMS,EXTRAS});
+    ORIGINAL_DATA = get(handles.button_load,'UserData');
+    set(handles.run_clustering,'UserData',{CL_RESULTS,DATA,PARAMS,EXTRAS,ORIGINAL_DATA});
     % Re-activate GUI
     myGUI = findobj(handles.clustering_gui,'Enable','off');
     set(myGUI,'Enable','on');     
@@ -223,6 +225,22 @@ function save_clustering_Callback(hObject, eventdata, handles)
     ORIGINAL_DATA = get(handles.button_load,'UserData');
     uisave({'CL_RESULTS','DATA','PARAMS','EXTRAS','ORIGINAL_DATA'},'cl_res');
     
+
+%% RESULTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+function load_clustering_Callback(hObject, eventdata, handles)
+    % Load clustering results from this GUI
+    err = load_CLRES(handles);  
+    if err == 1
+        return
+    end
+    %gui_update(handles) 
+    activate_s(hObject, eventdata, handles);    
+function results_pop_Callback(hObject, eventdata, handles)
+    gui_results(handles,eventdata);
+function results_pop_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end    
     
     
 %% MENU %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -249,12 +267,6 @@ function dGap_Callback(hObject, eventdata, handles)
     list = {'Model 1','Model 2','Model 3','Model 4','Model 5'};
     indx = listdlg('ListString',list,'SelectionMode','single'); 
     button_load_Callback({'Gap',indx}, eventdata, handles);    
-% --------------------------------------------------------------------
-function load_res_Callback(hObject, eventdata, handles)
-function load_clres_Callback(hObject, eventdata, handles)
-    % Load clustering results from this GUI
-    load_CLRES(handles);  
-    activate_s(hObject, eventdata, handles);
 
     
     
@@ -315,3 +327,4 @@ function k_step_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end   
+

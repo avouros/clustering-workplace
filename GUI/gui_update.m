@@ -22,13 +22,16 @@ function gui_update(handles)
     set(handles.plotDim2,'Value',1);   
     set(handles.plotDim3,'Value',1); 
     set(handles.plotDim2,'Enable','off');
-    set(handles.plotDim3,'Enable','off');  
+    set(handles.plotDim3,'Enable','off');   
     if size(x,2) > 1
         set(handles.plotDim2,'Enable','on');
         set(handles.plotDim1,'String',['1';'2']);
         set(handles.plotDim2,'String',['1';'2']);
         set(handles.plotDim1,'Value',1);
-        set(handles.plotDim2,'Value',2);        
+        set(handles.plotDim2,'Value',2);   
+        set(handles.plotDim3,'String',num2str(0));
+        set(handles.plotDim3,'Value',1); 
+        set(handles.plotDim3,'Enable','off'); 
     end
     if size(x,2) > 2
         set(handles.plotDim3,'Enable','on');    
@@ -92,5 +95,12 @@ function gui_update(handles)
     t = [str1,str2,act];
     set(handles.dataset_feats,'Data',t);    
     
+    %% Resulta
+    dat = get(handles.run_clustering,'UserData');
+    if isempty(dat)
+        set(handles.results_pop,'Enable','off');
+    else
+        set(handles.results_pop,'Enable','on');
+    end
 end
 
