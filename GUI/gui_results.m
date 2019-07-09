@@ -16,7 +16,8 @@ function gui_results(handles,eventdata)
             gui_performance_internal(dat);
         case 'performance (external)'
             gui_performance_external(dat);
-        case 'correlation'
+        case 'centroids'
+            plotter_init_centers(dat);
         otherwise
             error('Unknown result');
     end
