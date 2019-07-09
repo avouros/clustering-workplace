@@ -44,6 +44,9 @@ function [CL_RESULTS,x,PARAMS,EXTRAS] = clustering_exe(method_norm,method_center
             s = SS(j);
             % Execute clustering
             [idx,centroids,w,iterations] = cluster_algorithm(x,k,s,centers,method_cluster);
+            if ~isempty(find(isnan(w)))
+                return
+            end
             CL_RESULTS(i,j).idx = idx;
             CL_RESULTS(i,j).w = w;
             CL_RESULTS(i,j).iter = iterations;

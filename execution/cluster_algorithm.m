@@ -30,7 +30,8 @@ function [idx,centroids,w,iterations] = cluster_algorithm(x,k,s,centers,method_c
                     idx = NaN(size(x,1));
                     centroids = NaN(size(centers));
                     w = nan(1,size(centroids,2));
-                    %errordlg('The NAG Toolbox for MATLAB is required to run this algorithm. The toolbox is available at https://www.nag.co.uk/nag-toolbox-matlab','Missing toolbox');
+                    iterations = NaN;
+                    errordlg('The NAG Toolbox for MATLAB is required to run this algorithm. The toolbox is available at https://www.nag.co.uk/nag-toolbox-matlab','Missing toolbox');
                     %error('The NAG Toolbox for MATLAB is required to run this algorithm. The toolbox is available at https://www.nag.co.uk/nag-toolbox-matlab');
                 end
             case 'K-Medians'

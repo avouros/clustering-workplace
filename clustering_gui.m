@@ -207,6 +207,14 @@ function run_clustering_Callback(hObject, eventdata, handles)
     pause(0.005)
     % Execute clustering
     [CL_RESULTS,DATA,PARAMS,EXTRAS] = clustering_exe(method_norm,method_centers,method_cluster,x,KS,SS);
+    if ~isempty(find(arrayfun(@(x) isempty(x.w), CL_RESULTS)==1))
+        % Reset the clustering was not complete
+        myGUI = findobj(handles.clustering_gui,'Enable','off');
+        set(myGUI,'Enable','on');     
+        activate_s(hObject, eventdata, handles);
+        set(handles.results_pop,'Enable','off');
+        return
+    end
     fdata = get(handles.dataset_feats,'Data');
     PARAMS.UI = {fdata,method_norm,method_centers,method_cluster};
     ORIGINAL_DATA = get(handles.button_load,'UserData');
