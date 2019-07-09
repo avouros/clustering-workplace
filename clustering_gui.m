@@ -22,7 +22,7 @@ function varargout = clustering_gui(varargin)
 
 % Edit the above text to modify the response to help clustering_gui
 
-% Last Modified by GUIDE v2.5 07-Jul-2019 11:11:16
+% Last Modified by GUIDE v2.5 09-Jul-2019 09:19:23
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -327,4 +327,3 @@ function k_step_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end   
-
