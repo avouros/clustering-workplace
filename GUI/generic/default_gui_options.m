@@ -3,6 +3,7 @@ function default_gui_options(handles)
 
     FontName = 'default';
     FontUnits = 'points';
+    PaperUnits = 'points';
     Units = 'character';
     
     fields = fieldnames(handles);
@@ -19,7 +20,7 @@ function default_gui_options(handles)
         end     
         % PaperUnits
         try
-            eval(['handles.' fields{(i)} '.PaperUnits=' sprintf('''%s''',Units) ';']);
+            eval(['handles.' fields{(i)} '.PaperUnits=' sprintf('''%s''',PaperUnits) ';']);
         catch
         end      
         % FontUnits
