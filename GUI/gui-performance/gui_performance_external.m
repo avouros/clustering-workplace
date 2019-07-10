@@ -53,7 +53,7 @@ function gui_performance_external_OpeningFcn(hObject, eventdata, handles, vararg
     end
 
     % Compute the indexes
-    h = waitbar(0,'Computing external indexes...','Name','Lodaing');
+    h = waitbar(0,'Computing external indexes...','Name','Loading');
     dat = get(handles.refresh_plots,'UserData');
     CL_RESULTS = dat{1};
     DATA = dat{2};
