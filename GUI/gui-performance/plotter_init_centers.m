@@ -105,6 +105,8 @@ function plotter_init_centers_OpeningFcn(hObject, eventdata, handles, varargin)
     end
     collect_and_plot(handles)
 
+    default_gui_options(handles) %dafault gui options
+    
     % Choose default command line output for plotter_init_centers
     handles.output = hObject;
 

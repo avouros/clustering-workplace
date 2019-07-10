@@ -16,6 +16,8 @@ function gui_opening(handles)
     set(handles.dBrodinova,'Enable','on');
     set(handles.dYY,'Enable','on');
     set(handles.dGap,'Enable','on');
+    
+    set(handles.features_properties,'String',' ');
      
     % Clustering properties
     str_norms = {'none';'one';'n-norm';'z-score';'scale'};

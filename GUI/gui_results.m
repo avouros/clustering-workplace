@@ -15,7 +15,10 @@ function gui_results(handles,eventdata)
         case 'performance (internal)'
             gui_performance_internal(dat);
         case 'performance (external)'
-            gui_performance_external(dat);
+            try
+                gui_performance_external(dat);
+            catch
+            end
         case 'centroids'
             plotter_init_centers(dat);
         otherwise

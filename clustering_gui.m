@@ -22,7 +22,7 @@ function varargout = clustering_gui(varargin)
 
 % Edit the above text to modify the response to help clustering_gui
 
-% Last Modified by GUIDE v2.5 09-Jul-2019 09:19:23
+% Last Modified by GUIDE v2.5 10-Jul-2019 23:27:14
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -48,6 +48,7 @@ end
 function clustering_gui_OpeningFcn(hObject, eventdata, handles, varargin)
     addpath(genpath(pwd)); %add everything to the MATLAB path
     gui_opening(handles);  %initialize gui
+    default_gui_options(handles) %dafault gui options
     % This function has no output args, see OutputFcn.
     % hObject    handle to figure
     % eventdata  reserved - to be defined in a future version of MATLAB
@@ -98,7 +99,6 @@ function button_load_Callback(hObject, eventdata, handles)
     set(handles.save_clustering,'enable','off');
     set(handles.plotDim1,'enable','on');
     set(handles.plotDim2,'enable','on');
-    set(handles.plotDim3,'enable','on');
     set(handles.plotDim3,'enable','on');
     set(handles.dataset_norm,'enable','on');    
     % Update GUI
@@ -221,7 +221,13 @@ function run_clustering_Callback(hObject, eventdata, handles)
     set(handles.run_clustering,'UserData',{CL_RESULTS,DATA,PARAMS,EXTRAS,ORIGINAL_DATA});
     % Re-activate GUI
     myGUI = findobj(handles.clustering_gui,'Enable','off');
-    set(myGUI,'Enable','on');     
+    set(myGUI,'Enable','on');   
+    if size(ORIGINAL_DATA{1},2) == 1
+        set(handles.plotDim2,'enable','off');
+        set(handles.plotDim3,'enable','off');
+    elseif size(ORIGINAL_DATA{1},2) == 2
+        set(handles.plotDim3,'enable','off');
+    end
     activate_s(hObject, eventdata, handles)
     
 function save_clustering_Callback(hObject, eventdata, handles)

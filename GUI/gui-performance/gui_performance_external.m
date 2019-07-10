@@ -22,7 +22,7 @@ function varargout = gui_performance_external(varargin)
 
 % Edit the above text to modify the response to help gui_performance_external
 
-% Last Modified by GUIDE v2.5 08-Jul-2019 23:00:06
+% Last Modified by GUIDE v2.5 11-Jul-2019 00:04:28
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -60,13 +60,23 @@ function gui_performance_external_OpeningFcn(hObject, eventdata, handles, vararg
     PARAMS = dat{3};
     EXTRAS = dat{4}; %MST and LOF
     ORIGINAL_DATA = dat{5};
-    PERF_EXTER = performance_external_simple(ORIGINAL_DATA{2},CL_RESULTS);
-    delete(h);
-    set(handles.gui_performance_external,'UserData',PERF_EXTER);
-    
     [n,p] = size(DATA);
     Ks = PARAMS.k;
     Ss = PARAMS.s;
+    tmp = length(unique(ORIGINAL_DATA{2}));
+    if isempty(find(Ks==tmp))
+        errordlg('Cannot compute external clustering indexes because the clustering with the true number of clusters is unavailable.','Error');
+        delete(h);
+        handles.output = hObject;
+        guidata(hObject, handles);        
+        gui_performance_external_CloseRequestFcn(hObject, eventdata, handles);
+        return
+    else
+        res = CL_RESULTS(find(Ks==tmp),:);
+    end
+    PERF_EXTER = performance_external_simple(ORIGINAL_DATA{2},res);
+    set(handles.gui_performance_external,'UserData',PERF_EXTER);
+    delete(h);
     
     % Table: active_indexExt
     str = fieldnames(PERF_EXTER);
@@ -86,6 +96,7 @@ function gui_performance_external_OpeningFcn(hObject, eventdata, handles, vararg
     
     % Update the GUI
     gui_performance_external_update(handles);    
+    default_gui_options(handles) %dafault gui options
     % Choose default command line output for gui_performance_external
     handles.output = hObject;
     % Update handles structure
@@ -103,3 +114,20 @@ function varargout = gui_performance_external_OutputFcn(hObject, eventdata, hand
 % --- Executes on button press in refresh_plots.
 function refresh_plots_Callback(hObject, eventdata, handles)
     gui_performance_external_update(handles);    
+
+
+% --- Executes when user attempts to close gui_performance_external.
+function gui_performance_external_CloseRequestFcn(hObject, eventdata, handles)
+% hObject    handle to gui_performance_external (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: delete(hObject) closes the figure
+delete(hObject);
+
+
+% --- Executes during object deletion, before destroying properties.
+function gui_performance_external_DeleteFcn(hObject, eventdata, handles)
+% hObject    handle to gui_performance_external (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)

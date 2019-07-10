@@ -1,7 +1,7 @@
-function PERF_EXTER = performance_external_simple(true_values, CL_RESULTS)
+function PERF_EXTER = performance_external_simple(true_values, res)
 %PERFORMANCE_EXTERNAL_SIMPLE 
 
-    [~,s] = size(CL_RESULTS);
+    [~,s] = size(res);
     k = length(unique(true_values));
     
     PERF_EXTER = struct('entropy',[],'purity',[],...
@@ -9,7 +9,7 @@ function PERF_EXTER = performance_external_simple(true_values, CL_RESULTS)
     PERF_EXTER = repmat(PERF_EXTER,1,s);  
     
     for i = 1:s
-        predicted_values = CL_RESULTS(k,i).idx;
+        predicted_values = res(1,i).idx;
         
         [clustering_entropy, ~] = cl_entropy(true_values, predicted_values);
         clustering_purity = cl_purity(true_values, predicted_values);

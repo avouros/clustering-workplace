@@ -1,4 +1,4 @@
-function [outputArg1,outputArg2] = gui_performance_external_update(handles)
+function gui_performance_external_update(handles)
 %Update the gui_performance_external based on user's selections
 
     dat = get(handles.refresh_plots,'UserData');

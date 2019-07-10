@@ -114,6 +114,7 @@ function gui_performance_internal_OpeningFcn(hObject, eventdata, handles, vararg
     
     % Update the GUI
     gui_performance_internal_update(handles);
+    default_gui_options(handles) %dafault gui options
     % Choose default command line output for gui_performance_internal
     handles.output = hObject;
     % Update handles structure
