@@ -15,7 +15,12 @@ function default_gui_options(handles)
         try
             eval(['handles.' fields{(i)} '.Units=' sprintf('''%s''',Units) ';']);
         catch
-        end        
+        end     
+        % PaperUnits
+        try
+            eval(['handles.' fields{(i)} '.PaperUnits=' sprintf('''%s''',Units) ';']);
+        catch
+        end          
     end
 end
 
