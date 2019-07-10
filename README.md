@@ -4,6 +4,8 @@
 
 - Files contain further information about relevant studies and links to online material used for the various formulas.
 
+- All the R packages/codes used for the MATLAB implementation are under the GPLv3 license.
+
 ## Citations for software and datasets that we have used in this project
 
 ### Datasets
