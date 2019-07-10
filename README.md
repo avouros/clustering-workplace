@@ -1,3 +1,9 @@
+## Notes:
+
+- For the Hartigan and Wong's K-Means the [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) is required. An open source version of the algorithm can be found [here](https://people.sc.fsu.edu/~jburkardt/m_src/matlab_kmeans/matlab_kmeans.html).
+
+- Files contain further information about relevant studies and links to online material used for the various formulas.
+
 ## Citations for software and datasets that we have used in this project
 
 ### Datasets
