@@ -35,7 +35,7 @@ MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`
 
 ### Algorithms
 
-**Sparse K-Means algorithm:**
+**Sparse K-Means:**
 
 [Witten, Daniela M., and Robert Tibshirani. "A framework for feature selection in clustering." Journal of the American Statistical Association 105.490 (2010): 713-726.](https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2010.tm09415)
 
