@@ -24,9 +24,21 @@
 
 MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
 
+
+### Algorithms
+
 **Sparse K-Means algorithm:**
 
 [Witten, Daniela M., and Robert Tibshirani. "A framework for feature selection in clustering." Journal of the American Statistical Association 105.490 (2010): 713-726.](https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2010.tm09415)
 
 MATLAB code was based on the R implementation of the algorithm; package: [`sparcl`](https://cran.r-project.org/web/packages/sparcl/index.html)
 
+**Density K-Means++:**
+
+[Nidheesh, N., KA Abdul Nazeer, and P. M. Ameer. "An enhanced deterministic K-Means clustering algorithm for cancer subtype prediction from gene expression data." Computers in biology and medicine 91 (2017): 213-221.](https://www.sciencedirect.com/science/article/pii/S0010482517303402)
+
+MATLAB code was based on the R implementation of the algorithm; code: [`dkmpp_0.1.0`](https://github.com/nidheesh-n/dkmpp)
+
+**K-Means++:**
+
+MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
