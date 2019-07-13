@@ -39,11 +39,6 @@ function [idx,centroids,w,niter,C,flag] = sparse_kmeans(x,k,s,varargin)
 % - C         : initial centroids
 % - flag      : error indication (empty clusters) = 1 
 
-% Note:
-% The weighted between-cluster sum of squares of the clustering can be 
-% computed using the [~,BCSSp] = cluster_metrics(x,idx) function. 
-% Then [BCSS_w = sum(BCSSp .* w)].
-
 
 
     % Default number of iterations
@@ -90,8 +85,7 @@ function [idx,centroids,w,niter,C,flag] = sparse_kmeans(x,k,s,varargin)
     while (sum(abs(w-w_old)) / sum(abs(w_old))) > 10^-4 && (niter < ITER)
 
         % Update the variables
-        niter = niter + 1;
-        %w(w<0) = 10^-6; %negative weights are possible... why?      
+        niter = niter + 1;  
         w_old = w;       
 
         % Update the clusters (after the first iteration)
@@ -128,8 +122,8 @@ function [idx,centroids,w,niter,C,flag] = sparse_kmeans(x,k,s,varargin)
         delta = BinarySearchDelta(-WCSSp+TSSp , s);
         % Compute the new weights
         w_tmp = sign(-WCSSp+TSSp) .* max(0,abs(-WCSSp+TSSp)-delta); 
+		w_tmp(w_tmp<=0) = 10^-9; %negative weights are possible... why?    
         w = w_tmp/norm(w_tmp,2);
-        w(w<0) = 0; %assign 0 to negative weights
     end
 end
 
