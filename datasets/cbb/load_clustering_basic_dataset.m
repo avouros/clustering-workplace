@@ -15,9 +15,7 @@ function [idx,dims,cls] = load_clustering_basic_dataset(fn,set,number)
 %  [idx,data,cls] = load_dataset(fn,'A-sets',1)
    
     assert(exist(fn,'dir')==7,'Wrong path');
-    fn = fullfile(fn,set);
-    assert(exist(fn,'dir')==7,'Wrong set');
-    
+
     switch set
         case 'A-sets'
             fn = fullfile(fn,'Asets.csv');

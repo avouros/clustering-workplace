@@ -1,4 +1,4 @@
-function [x,x_labs] = various_cluster_data(model,visualize)
+function [x,x_labs] = mixed_cluster_data(model,visualize)
 %MIXED_CLUSTER_DATA contains dataset generation models with various
 %properties.
 

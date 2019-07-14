@@ -22,7 +22,7 @@ function varargout = clustering_gui(varargin)
 
 % Edit the above text to modify the response to help clustering_gui
 
-% Last Modified by GUIDE v2.5 10-Jul-2019 23:27:14
+% Last Modified by GUIDE v2.5 14-Jul-2019 18:18:59
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -281,7 +281,10 @@ function dGap_Callback(hObject, eventdata, handles)
     list = {'Model 1','Model 2','Model 3','Model 4','Model 5'};
     indx = listdlg('ListString',list,'SelectionMode','single'); 
     button_load_Callback({'Gap',indx}, eventdata, handles);    
-
+function dMixed_Callback(hObject, eventdata, handles)
+    list = {'Model 1','Model 2','Model 3','Model 4'};
+    indx = listdlg('ListString',list,'SelectionMode','single'); 
+    button_load_Callback({'Mixed',indx}, eventdata, handles);  
     
     
  %% OTHER GUI PARTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
@@ -341,3 +344,4 @@ function k_step_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end   
+
