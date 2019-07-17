@@ -47,6 +47,10 @@ MATLAB code was based on the R implementation of the algorithm; package: [`sparc
 
 MATLAB code was based on the R implementation of the algorithm; code: [`dkmpp_0.1.0`](https://github.com/nidheesh-n/dkmpp)
 
+**ROBIN:**
+
+MATLAB code was originally based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
+
 **K-Means++:**
 
 MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
