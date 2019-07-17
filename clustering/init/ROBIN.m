@@ -4,6 +4,13 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
 % density insensitive seeding." Pattern Recognition Letters 
 % 30.11 (2009): 994-1002.
 
+%Original code in R was obtained from the wrsk package 
+%https://github.com/brodsa/wrsk and some modifications have been added.
+%Brodinová, Šárka, et al. "Robust and sparse k-means clustering for 
+%high-dimensional data." Advances in Data Analysis and Classification 
+%(2017): 1-28.
+
+
     LOFCOM = 'lof_paper';
     DETERMINISTIC = 0;
     critRobin = 1.05;
@@ -28,8 +35,6 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
     % Compute LOF either based on the code or the paper
     if isempty(lof)
         switch LOFCOM
-            case 'lof_com'
-                lof = lof_com(data,nn);
             case 'lof_paper'
                 lof = lof_paper(data,nn);
             case 'lof_given'
@@ -52,10 +57,10 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
     % Find centroids
     C = [];
     while length(C) < k
-        if length(C) < 2
+        if length(C) < 1
             [~,sorted] = sort(dists(r,:),'descend');
         else
-            [~,sorted] = sort(min(dists(C,:)),'descend');
+            [~,sorted] = sort(min(dists(C,:),[],1),'descend');
         end
         sorted_lof = lof(sorted);
         id = find((sorted_lof < critRobin) == 1);
