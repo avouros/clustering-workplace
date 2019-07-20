@@ -4,16 +4,18 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
 % density insensitive seeding." Pattern Recognition Letters 
 % 30.11 (2009): 994-1002.
 
-%Original code in R was obtained from the wrsk package 
-%https://github.com/brodsa/wrsk and some modifications have been added.
-%Brodinová, Šárka, et al. "Robust and sparse k-means clustering for 
-%high-dimensional data." Advances in Data Analysis and Classification 
-%(2017): 1-28.
+%The default crit values of 0.05 and 1.05 was obtained from the ROBIN
+%implementation in the study of:
+%Brodinová, Š., Filzmoser, P., Ortner, T., Breiteneder, C., & 
+%Rohm, M. (2017). Robust and sparse k-means clustering for 
+%high-dimensional data. Advances in Data Analysis and 
+%Classification, 1-28.
 
 
     LOFCOM = 'lof_paper';
     DETERMINISTIC = 0;
-    critRobin = 1.05;
+	critRobin = 0.05;
+    critRobin_1 = 1.05;
     lof = [];
         
     for iii = 1:length(varargin)
@@ -63,7 +65,14 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
             [~,sorted] = sort(min(dists(C,:),[],1),'descend');
         end
         sorted_lof = lof(sorted);
-        id = find((sorted_lof < critRobin) == 1);
+		id = find( (1-critRobin < sorted_lof) & (sorted_lof < 1+critRobin) );
+		if isempty(id)
+			warning('ROBIN: no valid id point, try 1.');
+			id = find((sorted_lof < critRobin_1) == 1);    
+			if isempty(id)
+				error('ROBIN: cannot find valid id point.')
+			end
+		end
         id = id(1);
         r = sorted(id);
         C = union(C,r);
