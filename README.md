@@ -13,7 +13,7 @@ This code was written for quick experimentation on different clustering techniqu
 
 - To use this code the [Statistics and Machine Learning Toolbox](https://www.mathworks.com/products/statistics.html) for MATLAB is required. 
 
-- For the Hartigan and Wong's K-Means the [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) is required. An open source version of the algorithm can be found [here](https://people.sc.fsu.edu/~jburkardt/m_src/matlab_kmeans/matlab_kmeans.html).
+- For the Hartigan and Wong's K-Means the [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) is required.
 
 - Files contain further information about relevant studies and links to online material used for the various formulas.
 
