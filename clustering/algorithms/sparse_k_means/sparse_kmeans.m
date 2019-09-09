@@ -40,6 +40,8 @@ function [idx,centroids,w,niter,C,flag] = sparse_kmeans(x,k,s,varargin)
 % - flag      : error indication (empty clusters) = 1 
 
 
+% Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
+
 
     % Default number of iterations
     ITER = 6;    %main iterations

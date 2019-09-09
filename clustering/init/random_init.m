@@ -9,6 +9,7 @@ function [C,FC,centers_j] = random_init(x,k)
 % [2] Jancey, R. C. "Multidimensional group analysis." Australian Journal 
 %     of Botany 14.1 (1966): 127-130.
 
+% Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
 
     % Random datapoints as centroids [1]
     [~,C] = datasample(x,k,'Replace',false);

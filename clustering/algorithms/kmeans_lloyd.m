@@ -13,6 +13,7 @@ function [idx,centroids,iterations,ifault] = kmeans_lloyd(x,k,init_centroids,ITE
 % iterations: number of iterations before converged.
 % ifault: 2 = no converged, 1 = empty cluster(s), 0 = converged
 
+
     % Assert initial centroids
     s = size(init_centroids);
     assert(s(1)==k);
