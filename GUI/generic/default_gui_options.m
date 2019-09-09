@@ -4,7 +4,7 @@ function default_gui_options(handles)
     FontName = 'default';
     FontUnits = 'points';
     PaperUnits = 'points';
-    Units = 'character';
+    Units = 'normalized';%'character';
     
     fields = fieldnames(handles);
     for i = 1:length(fields)
