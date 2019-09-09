@@ -1,3 +1,12 @@
+## TODO:
+
+- Write a wiki!
+
+- Create some tests.
+
+- Standalone app.
+
+
 ## Notes
 
 - To use this code the [Statistics and Machine Learning Toolbox](https://www.mathworks.com/products/statistics.html) for MATLAB is required. 
