@@ -1,3 +1,5 @@
+This code was written for quick experimentation on different clustering techniques. 
+
 ## TODO:
 
 - Write a wiki!
