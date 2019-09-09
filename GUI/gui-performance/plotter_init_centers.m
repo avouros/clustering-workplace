@@ -22,7 +22,7 @@ function varargout = plotter_init_centers(varargin)
 
 % Edit the above text to modify the response to help plotter_init_centers
 
-% Last Modified by GUIDE v2.5 15-Dec-2018 11:46:09
+% Last Modified by GUIDE v2.5 09-Sep-2019 09:40:33
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -59,8 +59,8 @@ function plotter_init_centers_OpeningFcn(hObject, eventdata, handles, varargin)
     EXTRAS = dat{4}; %MST and LOF
     ORIGINAL_DATA = dat{5};
     
-    set(handles.dataset_norm,'String',PARAMS.k);
-    set(handles.dataset_norm,'Value',1);
+    set(handles.dataset_k,'String',PARAMS.k);
+    set(handles.dataset_k,'Value',1);
     set(handles.dataset_sparsity,'String',PARAMS.s);
     set(handles.dataset_sparsity,'Value',1);
     if length(PARAMS.s) == 1 && PARAMS.s(1) == 0
@@ -98,7 +98,7 @@ function plotter_init_centers_OpeningFcn(hObject, eventdata, handles, varargin)
     set(handles.show_final_centers,'Value',0);  
     set(handles.show_final_clusters,'Value',0); 
     try
-        set(handles.dataset_norm,'UserData',CL_RESULTS(1,1).centers0);
+        set(handles.dataset_k,'UserData',CL_RESULTS(1,1).centers0);
     catch
         plotter_init_centers_CloseRequestFcn(hObject, eventdata, handles);
         return
@@ -155,9 +155,9 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-function dataset_norm_Callback(hObject, eventdata, handles)
+function dataset_k_Callback(hObject, eventdata, handles)
     collect_and_plot(handles);
-function dataset_norm_CreateFcn(hObject, eventdata, handles)
+function dataset_k_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
@@ -187,32 +187,48 @@ function collect_and_plot(handles)
     CL_RESULTS = dat{1};
     x = dat{2};
     PARAMS = dat{3};
+    ks = PARAMS.k;
+    ss = PARAMS.s;
     EXTRAS = dat{4}; %MST and LOF
     ORIGINAL_DATA = dat{5};
 
-    str = get(handles.dataset_norm,'String');
-    i = get(handles.dataset_norm,'Value');
+    % Pick k
+    str = get(handles.dataset_k,'String');
+    i = get(handles.dataset_k,'Value');
     numk = str2double(str(i,:));
-    nums = get(handles.dataset_sparsity,'Value');    
+    selk = find(ks==numk);
+    
+    % Pick s
+    str = get(handles.dataset_sparsity,'String');
+    j = get(handles.dataset_sparsity,'Value');
+    nums = str2double(str(j,:));
+    if isequal(nums,1)
+        %No sparsity
+        sels = 1;
+    else
+        %Sparsity
+        sels = find(ss==nums);
+    end
+
     % Show initial centers
     if get(handles.show_init_centers,'Value') == 1
-        set(handles.dataset_norm,'UserData',CL_RESULTS(numk,1).centers0);
+        set(handles.dataset_k,'UserData',CL_RESULTS(selk,sels).centers0);
     else
-        set(handles.dataset_norm,'UserData',[]);
+        set(handles.dataset_k,'UserData',[]);
     end
     % Show final centers
     if get(handles.show_final_centers,'Value') == 1
-        y = CL_RESULTS(numk,nums).idx;
-        final_centers = clustering_metrics(x,y,'Weights',CL_RESULTS(numk,nums).w);
-        w = repmat(CL_RESULTS(numk,nums).w,size(x,1),1);
+        y = CL_RESULTS(selk,sels).idx;
+        final_centers = clustering_metrics(x,y,'Weights',CL_RESULTS(selk,sels).w);
+        w = repmat(CL_RESULTS(selk,sels).w,size(x,1),1);
         x = x.*w;        
     else
         final_centers = [];
     end   
     % Show final clusters
     if get(handles.show_final_clusters,'Value') == 1
-        y = CL_RESULTS(numk,nums).idx;
+        y = CL_RESULTS(selk,sels).idx;
     else
         y = ones(size(x,1),1);
     end
-    plot_dataset(x,y,handles.plot_dataset2,handles.plotDim1,handles.plotDim2,handles.plotDim3,handles.generate_new_figure,handles.dataset_norm,final_centers);
+    plot_dataset(x,y,handles.plot_dataset2,handles.plotDim1,handles.plotDim2,handles.plotDim3,handles.generate_new_figure,handles.dataset_k,final_centers);
