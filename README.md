@@ -6,7 +6,7 @@ This code was written for quick experimentation on different clustering techniqu
 
 - Create some tests.
 
-- Standalone app.
+- Release the full version.
 
 
 ## Notes
