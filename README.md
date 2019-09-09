@@ -37,8 +37,6 @@ MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`
 
 **Mixed dataset models:**
 
-Models proposed in our study.
-
 [Vouros, Avgoustinos, et al. "An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations." arXiv preprint arXiv:1908.09946 (2019).](https://arxiv.org/abs/1908.09946)
 
 
