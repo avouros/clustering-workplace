@@ -203,15 +203,13 @@ function run_clustering_Callback(hObject, eventdata, handles)
     [method_norm,method_centers,method_cluster,x,KS,SS] = collect_options(handles);
     if isequal(method_cluster,'K-Means (Hartigan-Wong)')
         try
-            g03ef(rand(10,4),ones([10,1],'int64'),rand(1,4));
+            g03ef(rand(10,4),ones([10,1],'int64'),centers,'maxit', int64(10000));
         catch
-            errordlg('The NAG Toolbox for MATLAB is required to run this algorithm. The toolbox is available at https://www.nag.co.uk/nag-toolbox-matlab','Missing toolbox');
-            myGUI = findobj(handles.clustering_gui,'Enable','off');
-            set(myGUI,'Enable','on');     
-            activate_s(hObject, eventdata, handles);
-            set(handles.results_pop,'Enable','off');       
-            return
-        end      
+        end
+        myGUI = findobj(handles.clustering_gui,'Enable','off');
+        set(myGUI,'Enable','on');     
+        activate_s(hObject, eventdata, handles);
+        set(handles.results_pop,'Enable','off');        
     end
     % Disable the GUI
     myGUI = findobj(handles.clustering_gui,'Enable','on');
