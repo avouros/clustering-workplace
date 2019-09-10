@@ -79,6 +79,13 @@ function gui_performance_internal_update(handles)
             end
         end
     else    
+        tlabs = get(handles.active_k,'Data');
+        itlabs = find(cell2mat(tlabs(:,3))==1);
+        itlabs_ = cell2mat(tlabs(:,1));
+        itlabs_ = itlabs_(itlabs);
+        if isempty(itlabs_)
+            itlabs_ = 1;
+        end
         %Plot bars. Here we need to compute the positions
         strs = nan(x,1);
         bp = nan(x,z);
@@ -109,7 +116,7 @@ function gui_performance_internal_update(handles)
                 end
             end   
             set(handles.plot_performance,'XTick',mid);
-            set(handles.plot_performance,'XTickLabel',num2str((1:x)'));
+            set(handles.plot_performance,'XTickLabel',num2str(itlabs_));
         end
     end    
     ylabel('Index Value','parent',handles.plot_performance);
@@ -168,7 +175,7 @@ function gui_performance_internal_update(handles)
                 end
             end   
             set(handles.plot_weights,'XTick',mid);
-            set(handles.plot_weights,'XTickLabel',num2str((1:x)'));  
+            set(handles.plot_weights,'XTickLabel',num2str(itlabs_));  
         end
     end
     ylabel('Weight Value','parent',handles.plot_weights);
