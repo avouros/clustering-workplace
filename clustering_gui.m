@@ -243,15 +243,9 @@ function run_clustering_Callback(hObject, eventdata, handles)
     activate_s(hObject, eventdata, handles)
     
 function save_clustering_Callback(hObject, eventdata, handles)
-    dat = get(handles.run_clustering,'UserData');
-    CL_RESULTS = dat{1};
-    DATA = dat{2};
-    PARAMS = dat{3};
-    EXTRAS = dat{4}; %MST and LOF
-    ORIGINAL_DATA = get(handles.button_load,'UserData');
-    uisave({'CL_RESULTS','DATA','PARAMS','EXTRAS','ORIGINAL_DATA'},'cl_res');
+    save_all(handles)
     
-
+   
 %% RESULTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 function load_clustering_Callback(hObject, eventdata, handles)
     % Load clustering results from this GUI
