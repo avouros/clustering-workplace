@@ -22,7 +22,7 @@ function varargout = gui_performance_external(varargin)
 
 % Edit the above text to modify the response to help gui_performance_external
 
-% Last Modified by GUIDE v2.5 11-Jul-2019 00:04:28
+% Last Modified by GUIDE v2.5 10-Sep-2019 02:42:10
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -131,3 +131,19 @@ function gui_performance_external_DeleteFcn(hObject, eventdata, handles)
 % hObject    handle to gui_performance_external (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in save_extern.
+function save_extern_Callback(hObject, eventdata, handles)
+    selpath = uigetdir('','Select where to save the results');
+    if isequal(selpath,0)
+        return
+    end
+    perfExtern = get(handles.gui_performance_external,'UserData');
+    dat = get(handles.refresh_plots,'UserData');
+    s = dat{3}.s;
+    k = length(unique(dat{5}{2}));
+    T = struct2table(perfExtern);
+    T0 = array2table(s','VariableNames',{'sparsity'});
+    writetable([T0,T],fullfile(selpath,'perfExtern.csv'),'WriteVariableNames',1);
+    save(fullfile(selpath,'perfExtern'),'perfExtern');

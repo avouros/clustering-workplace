@@ -22,7 +22,7 @@ function varargout = gui_performance_internal(varargin)
 
 % Edit the above text to modify the response to help gui_performance_internal
 
-% Last Modified by GUIDE v2.5 08-Jul-2019 21:54:41
+% Last Modified by GUIDE v2.5 10-Sep-2019 02:41:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -141,3 +141,77 @@ function mplot_selection_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in save_intern.
+function save_intern_Callback(hObject, eventdata, handles)
+    selpath = uigetdir('','Select where to save the results');
+    if isequal(selpath,0)
+        return
+    end
+    perfIntern = get(handles.gui_performance_internal,'UserData');
+    dat = get(handles.refresh_plots,'UserData');
+    s = dat{3}.s;
+    k = dat{3}.k;
+    tmps = num2cell(s);
+    tmpk = [{'k\s'};num2cell(k')];    
+
+    z = [perfIntern.wSilh2];
+    wSilh2 = reshape(z,length(k),length(s));
+    z = [perfIntern.wSilh];
+    wSilh = reshape(z,length(k),length(s));  
+    z = [perfIntern.wDBi];
+    wDBi = reshape(z,length(k),length(s));  
+    z = [perfIntern.wBRi];
+    wBRi = reshape(z,length(k),length(s));      
+    z = [perfIntern.wCHi];
+    wCHi = reshape(z,length(k),length(s));  
+    
+    z = [perfIntern.Silh2];
+    Silh2 = reshape(z,length(k),length(s));
+    z = [perfIntern.Silh];
+    Silh = reshape(z,length(k),length(s));  
+    z = [perfIntern.DBi];
+    DBi = reshape(z,length(k),length(s));  
+    z = [perfIntern.BRi];
+    BRi = reshape(z,length(k),length(s));      
+    z = [perfIntern.CHi];
+    CHi = reshape(z,length(k),length(s));      
+    
+    wSilh2c = [tmpk,[tmps;num2cell(wSilh2)]];
+    wSilhc = [tmpk,[tmps;num2cell(wSilh)]];
+    wDBic = [tmpk,[tmps;num2cell(wDBi)]];
+    wBRic = [tmpk,[tmps;num2cell(wBRi)]];    
+    wCHic = [tmpk,[tmps;num2cell(wCHi)]];
+    
+    Silh2c = [tmpk,[tmps;num2cell(Silh2)]];
+    Silhc = [tmpk,[tmps;num2cell(Silh)]];
+    DBic = [tmpk,[tmps;num2cell(DBi)]];
+    BRic = [tmpk,[tmps;num2cell(BRi)]];    
+    CHic = [tmpk,[tmps;num2cell(CHi)]];   
+
+    a = [cell(1,length(s)+1);wSilh2c;...
+        cell(1,length(s)+1);wSilhc;...
+        cell(1,length(s)+1);wDBic;...
+        cell(1,length(s)+1);wBRic;...
+        cell(1,length(s)+1);wCHic;...
+        cell(1,length(s)+1);Silh2c;...
+        cell(1,length(s)+1);Silhc;...
+        cell(1,length(s)+1);DBic;...
+        cell(1,length(s)+1);BRic;...
+        cell(1,length(s)+1);CHic];
+    b = find(cellfun(@(x) isempty(x),a(:,1))==1);
+    a{b(1)} = 'wSilh2';
+    a{b(2)} = 'wSilh';
+    a{b(3)} = 'wDBi';
+    a{b(4)} = 'wBRi';
+    a{b(5)} = 'wCHi';
+    a{b(6)} = 'Silh2';
+    a{b(7)} = 'Silh';
+    a{b(8)} = 'DBi';
+    a{b(9)} = 'BRi';
+    a{b(10)} = 'CHi';
+
+    T = cell2table(a);
+    writetable(T,fullfile(selpath,'perfIntern.csv'),'WriteVariableNames',0);
+    save(fullfile(selpath,'perfIntern'),'perfIntern');
