@@ -22,7 +22,7 @@ function gui_opening(handles)
      
     % Clustering properties
     str_norms = {'none';'one';'n-norm';'z-score';'scale'};
-    str_centroids = {'Random points';'First points';'K-Means++';'Kaufman';'ROBIN';'Density K-Means++'};
+    str_centroids = {'Random points';'First points';'K-Means++';'Kaufman';'ROBIN';'ROBIN-DETERM';'Density K-Means++'};
     str_clustering = {'None';'K-Means (Lloyd)';'K-Means (Hartigan-Wong)';'K-Medians';'Sparse K-Means'};
     set(handles.init_norm,'String',str_norms);
     set(handles.init_centers,'String',str_centroids);
