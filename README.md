@@ -19,6 +19,46 @@ This code was written for quick experimentation on different clustering techniqu
 
 - All the R packages/codes used for the MATLAB implementation are under the GPLv3 license.
 
+
+## Contents
+
+### Clustering initialization
+
+- **Random points**, pick random datapoints.
+- **First points**, pick the first datapoints of the dataset.
+- **K-Means++**, pick datapoints away from each other.
+- **ROBIN**, pick datapoints away from each other and also in dense regions of the feature space. Density is computed using the LOF score.
+- **ROBIN-DETERM (or D-ROBIN)**, same as ROBIN but deterministic.
+- **Kaufman**, pick datapoints away from each other close to dense regions of the feature space.
+- **Density K-Means++**, same as ROBIN but deterministic and uses another statistic to find density based on minimum spanning trees.
+
+### Clustering algorithms
+
+- **K-Means (Lloyd)**, the common K-Means algorithm.
+- **K-Means (Hartigan-Wong)**, available only with [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab).
+- **K-Medians**, similar to K-Means but uses the median instead of the mean to update the centroids.
+- **Sparse K-Means**, K-Means with feature selection and assessment mechanism
+
+### External clustering validation
+
+- **entropy**
+- **purity**
+- **F-score**
+- **accuracy**
+- **recall**
+- **specificity**
+- **precision**
+
+### Internal clustering validation
+
+- **DaviesBouldinIndex (DBi)**
+- **BanfieldRafteryIndex (BRi)**
+- **CalinskiHarabaszIndex (CHi)**
+- **Silhouette (Silh2 and Silh)**, Silh2 is computed by taking the mean silhouette of the datapoints, Silh is computed by taking the mean silhouette of the clusters.
+
+**Note**: In the case of Sparse K-Means, indexes with 'w' (e.g. wSilh2) have been computed using the weighted dataset. For the rest of the algorithms index with 'w' should have the same value as the ones without (e.g. wSilh2 = Silh2).
+
+
 ## Citations for software and datasets that we have used in this project
 
 ### Datasets
@@ -35,7 +75,7 @@ This code was written for quick experimentation on different clustering techniqu
 
 [Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.](https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/1467-9868.00293)
 
-**Weighted Gap models:**
+**Weighted Gap models (YanYe):**
 
 [Yan, Mingjin, and Keying Ye. "Determining the number of clusters using the weighted gap statistic." Biometrics 63.4 (2007): 1031-1037.](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00784.x)
 
