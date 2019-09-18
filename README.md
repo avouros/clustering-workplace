@@ -85,7 +85,6 @@ This code was written for quick experimentation on different clustering techniqu
 
 MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
 
-
 **Mixed dataset models:**
 
 [Vouros, Avgoustinos, et al. "An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations." arXiv preprint arXiv:1908.09946 (2019).](https://arxiv.org/abs/1908.09946)
