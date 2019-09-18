@@ -90,7 +90,12 @@ MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`
 [Vouros, Avgoustinos, et al. "An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations." arXiv preprint arXiv:1908.09946 (2019).](https://arxiv.org/abs/1908.09946)
 
 
-### Algorithms
+### Clustering Algorithms
+
+**K-Means (Lloyd and Hartigan-Wong):**
+
+MATLAB's and Python's default K-Means clustering is Lloyd's K-Means (initialized with the K-Means++ method) while R uses Hartigan-Wong' K-Means. For more information about these two algorithms refer to [Slonim, N., Aharoni, E., & Crammer, K. (2013, June). Hartigan's K-Means Versus Lloyd's K-Means—Is It Time for a Change?. In Twenty-Third International Joint Conference on Artificial Intelligence.](https://www.aaai.org/ocs/index.php/IJCAI/IJCAI13/paper/viewPaper/6780) and for a comparison to [Vouros, Avgoustinos, et al. "An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations." arXiv preprint arXiv:1908.09946 (2019).](https://arxiv.org/abs/1908.09946). Here we use [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) Hartigan and Wong's K-Means implementation thus in order to use this algorithm the toolbox is required. 
+
 
 **Sparse K-Means:**
 
@@ -98,20 +103,31 @@ MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`
 
 MATLAB code was based on the R implementation of the algorithm; package: [`sparcl`](https://cran.r-project.org/web/packages/sparcl/index.html)
 
-**Density K-Means++:**
 
-[Nidheesh, N., KA Abdul Nazeer, and P. M. Ameer. "An enhanced deterministic K-Means clustering algorithm for cancer subtype prediction from gene expression data." Computers in biology and medicine 91 (2017): 213-221.](https://www.sciencedirect.com/science/article/pii/S0010482517303402)
+### Clustering Initialization
 
-MATLAB code was based on the R implementation of the algorithm; code: [`dkmpp_0.1.0`](https://github.com/nidheesh-n/dkmpp)
+**Random points and First points:**
+
+These old K-Means initialization methods are described in [MacQueen, J. (1967, June). Some methods for classification and analysis of multivariate observations. In Proceedings of the fifth Berkeley symposium on mathematical statistics and probability (Vol. 1, No. 14, pp. 281-297)](https://books.google.co.uk/books?hl=en&lr=&id=IC4Ku_7dBFUC&oi=fnd&pg=PA281&dq=MacQueen,+James.+%22Some+methods+for+classification+and+analysis+of++%25+++++multivariate+observations.%22+Proceedings+of+the+fifth+Berkeley++%25+++++symposium+on+mathematical+statistics+and+probability.+Vol.+1.+No.++%25+++++14.+1967.&ots=nOYjJ1IguR&sig=2KaXt9BVq72T0m5571G-W758q1M&redir_esc=y#v=onepage&q&f=false). Random points just picks K random points of the dataset as initial centroids; First points just selects the first K points of the dataset as initial centroids.
+
+**K-Means++:**
+
+MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
 
 **ROBIN:**
 
 MATLAB code was originally based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
 
-**ROBIN-DETERM:**
+**Kaufman:**
+
+MATLAB implementation was based on the pseudocode of [Pena, J. M., Lozano, J. A., & Larranaga, P. (1999). An empirical comparison of four initialization methods for the k-means algorithm. Pattern recognition letters, 20(10), 1027-1040.](https://www.sciencedirect.com/science/article/pii/S0167865599000690)
+
+**ROBIN-DETERM (or D-ROBIN):**
 
 [Vouros, Avgoustinos, et al. "An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations." arXiv preprint arXiv:1908.09946 (2019).](https://arxiv.org/abs/1908.09946)
 
-**K-Means++:**
+**Density K-Means++:**
 
-MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
+[Nidheesh, N., KA Abdul Nazeer, and P. M. Ameer. "An enhanced deterministic K-Means clustering algorithm for cancer subtype prediction from gene expression data." Computers in biology and medicine 91 (2017): 213-221.](https://www.sciencedirect.com/science/article/pii/S0010482517303402)
+
+MATLAB code was based on the R implementation of the algorithm; code: [`dkmpp_0.1.0`](https://github.com/nidheesh-n/dkmpp)
