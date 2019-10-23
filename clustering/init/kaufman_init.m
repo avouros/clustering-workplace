@@ -12,6 +12,7 @@ function C = kaufman_init(x,k)
 
 % Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
 
+
     n = size(x,1);
 
     % Find the center of the dataset

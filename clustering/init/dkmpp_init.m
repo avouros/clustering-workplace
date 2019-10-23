@@ -13,6 +13,8 @@ function [C,optimal,rho,eps,eps_neighbors_] = dkmpp_init(x,k,L)
 %   and Medicine 91C (2017) pp. 213-221.
 %   https://doi.org/10.1016/j.compbiomed.2017.10.014
 
+%%
+
 % Input:
 % - x : a matrix where rows are observations and columns are attributes.
 % - k : number of target clusters.
