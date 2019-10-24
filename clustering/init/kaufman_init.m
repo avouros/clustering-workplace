@@ -6,7 +6,29 @@ function C = kaufman_init(x,k)
 % [1] Kaufman, L., and P. J. Rousseeuw. "Finding Groups in Data: An 
 %     Introduction to Cluster Analysis Wiley New York Google Scholar." 
 %     (1990).
-% [2] Pena, Jos� M., Jose Antonio Lozano, and Pedro Larranaga. "An 
+% [2] Pena, José M., Jose Antonio Lozano, and Pedro Larranaga. "An 
+%     empirical comparison of four initialization methods for the k-means 
+%     algorithm." Pattern recognition letters 20.10 (1999): 1027-1040.
+
+% Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
+
+%%
+
+% Input:
+% - x : a matrix where rows are observations and columns are attributes.
+% - k : number of target clusters.
+
+% Output:
+% - C : vector of row indeces of x (datapoints) to be used as initial
+%       centroids. 
+
+%%
+
+%References:
+% [1] Kaufman, L., and P. J. Rousseeuw. "Finding Groups in Data: An 
+%     Introduction to Cluster Analysis Wiley New York Google Scholar." 
+%     (1990).
+% [2] Pena, José M., Jose Antonio Lozano, and Pedro Larranaga. "An 
 %     empirical comparison of four initialization methods for the k-means 
 %     algorithm." Pattern recognition letters 20.10 (1999): 1027-1040.
 
