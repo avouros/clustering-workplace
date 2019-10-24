@@ -4,6 +4,39 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
 % density insensitive seeding." Pattern Recognition Letters 
 % 30.11 (2009): 994-1002.
 
+%References:
+% [1] Al Hasan, Mohammad, et al. "Robust partitional clustering by outlier 
+%     and density insensitive seeding." Pattern Recognition Letters 30.11 
+%     (2009): 994-1002.
+% [2] BrodinovÃ¡, Å ., Filzmoser, P., Ortner, T., Breiteneder, C., & Rohm, 
+%     M. (2017). Robust and sparse k-means clustering for high-dimensional 
+%     data. Advances in Data Analysis and Classification, 1-28.
+
+% Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
+
+%%
+
+% Input:
+% - x  : a matrix where rows are observations and columns are attributes.
+% - k  : number of target clusters.
+% - nn : number of neighbors.
+
+% Output:
+% - C   : vector of row indeces of x (datapoints) to be used as initial
+%         centroids. 
+% - LOF : the Local Outlier Factor score of each datapoint.
+% - varargin:
+%         (1) 'DETERMINISTIC': Gives a deterministic solution by fixing the
+%         reference point to the most dense region of the feature space.
+%         (2) 'critRobin', real-number:
+%         Critical cut-off value around 1 for LOF scores (1-critRobin, 
+%         1+critRobin).
+%         (3) 'LOF', Nx1 vector (N = number of datapoints):
+%         Pre-computed LOF scores for the datapoints.
+
+%%
+
+
 %The default crit values of 0.05 and 1.05 was obtained from the ROBIN
 %implementation in the study of:
 %Brodinová, Š., Filzmoser, P., Ortner, T., Breiteneder, C., & 
