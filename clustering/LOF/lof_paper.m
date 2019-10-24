@@ -9,8 +9,15 @@ function [LOF,ard,density,neighbors] = lof_paper(data,nn)
 
 %INPUT: 
 % nn: number of neighbors
-% data: dataset, rows = observations, columns = attributes
+% data: dataset, rows = observations (N), columns = attributes (p)
 % n2: (optional) computes the LOF only for the first n2 data points
+
+%OUTPUT:
+% LOF: LOF score of each element (Nx1 vector).
+% ard: average reachability distance (Nx1 vector).
+% density: density of each datapoint (Nx1 vector).
+% neighbors: a cell array (Nx1) where each cell contains the indexes of
+%            the nn closest datapoints of each datapoint. 
 
 % Author: Avgoustinos Vouros
 
