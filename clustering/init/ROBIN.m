@@ -44,8 +44,6 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
 %high-dimensional data. Advances in Data Analysis and 
 %Classification, 1-28.
 
-% Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
-
 
     LOFCOM = 'lof_paper';
     DETERMINISTIC = 0;
