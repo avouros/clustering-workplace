@@ -22,8 +22,6 @@ function C = kaufman_init(x,k)
 % - C : vector of row indeces of x (datapoints) to be used as initial
 %       centroids. 
 
-% Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
-
 %%
 
 
