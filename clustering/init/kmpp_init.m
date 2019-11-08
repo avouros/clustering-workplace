@@ -12,8 +12,6 @@ function C = kmpp_init(x,k,varargin)
 
 % Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
 
-%%
-
 % Input:
 % - x : a matrix where rows are observations and columns are attributes.
 % - k : number of target clusters.
@@ -23,6 +21,8 @@ function C = kmpp_init(x,k,varargin)
 % Output:
 % - C : vector, indeces of x (datapoints) to be used as initial
 %       centroids. 
+
+%%
 
     % Make the algorithm deterministic
     if ~isempty(varargin)
