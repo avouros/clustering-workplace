@@ -1,8 +1,10 @@
 function [C,lof] = ROBIN(data,k,nn,varargin)
-%The ROBIN clustering initialisation method based on the work of:
-% Al Hasan, Mohammad, et al. "Robust partitional clustering by outlier and 
-% density insensitive seeding." Pattern Recognition Letters 
-% 30.11 (2009): 994-1002.
+%The ROBIN clustering initialisation method based on the work of [1].
+%Original code in R can be found here [2]:
+%https://github.com/brodsa/wrsk
+
+% Matlab implementation:
+% Avgoustinos Vouros <avouros1@sheffield.ac.uk>, <av.vouros@gmail.com>
 
 %References:
 % [1] Al Hasan, Mohammad, et al. "Robust partitional clustering by outlier 
@@ -11,8 +13,6 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
 % [2] BrodinovÃ¡, Å ., Filzmoser, P., Ortner, T., Breiteneder, C., & Rohm, 
 %     M. (2017). Robust and sparse k-means clustering for high-dimensional 
 %     data. Advances in Data Analysis and Classification, 1-28.
-
-% Author: Avgoustinos Vouros, avouros1@sheffield.ac.uk
 
 %%
 
@@ -34,16 +34,10 @@ function [C,lof] = ROBIN(data,k,nn,varargin)
 %         (3) 'LOF', Nx1 vector (N = number of datapoints):
 %         Pre-computed LOF scores for the datapoints.
 
+% NOTE: The default crit values of 0.05 and 1.05 was obtained from the ROBIN
+%       implementation in the study of [2].
+
 %%
-
-
-%The default crit values of 0.05 and 1.05 was obtained from the ROBIN
-%implementation in the study of:
-%Brodinová, Š., Filzmoser, P., Ortner, T., Breiteneder, C., & 
-%Rohm, M. (2017). Robust and sparse k-means clustering for 
-%high-dimensional data. Advances in Data Analysis and 
-%Classification, 1-28.
-
 
     LOFCOM = 'lof_paper';
     DETERMINISTIC = 0;
