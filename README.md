@@ -28,7 +28,7 @@ This code was written for quick experimentation on different clustering techniqu
 - **First points**, pick the first datapoints of the dataset.
 - **K-Means++**, pick datapoints away from each other.
 - **ROBIN**, pick datapoints away from each other and also in dense regions of the feature space. Density is computed using the LOF score.
-- **ROBIN-DETERM (or D-ROBIN)**, same as ROBIN but deterministic.
+- **ROBIN-DETERM (or D-ROBIN)**, original determinitic version of ROBIN.
 - **Kaufman**, pick datapoints away from each other close to dense regions of the feature space.
 - **Density K-Means++**, same as ROBIN but deterministic and uses another statistic to find density based on minimum spanning trees.
 
@@ -58,6 +58,9 @@ This code was written for quick experimentation on different clustering techniqu
 
 **Note**: In the case of Sparse K-Means, indexes with 'w' (e.g. wSilh2) have been computed using the weighted dataset. For the rest of the algorithms index with 'w' should have the same value as the ones without (e.g. wSilh2 = Silh2).
 
+## Relevant publications
+
+[Vouros, A., Langdell, S., Croucher, M., & Vasilaki, E. (2019). An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations. arXiv preprint arXiv:1908.09946.](https://arxiv.org/abs/1908.09946)
 
 ## Citations for software and datasets that we have used in this project
 
