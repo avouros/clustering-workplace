@@ -122,10 +122,6 @@ MATLAB code was originally based on the R implementation of the algorithm; packa
 
 MATLAB implementation was based on the pseudocode of [Pena, J. M., Lozano, J. A., & Larranaga, P. (1999). An empirical comparison of four initialization methods for the k-means algorithm. Pattern recognition letters, 20(10), 1027-1040.](https://www.sciencedirect.com/science/article/pii/S0167865599000690)
 
-**ROBIN-DETERM (or D-ROBIN):**
-
-[Vouros, Avgoustinos, et al. "An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations." arXiv preprint arXiv:1908.09946 (2019).](https://arxiv.org/abs/1908.09946)
-
 **Density K-Means++:**
 
 [Nidheesh, N., KA Abdul Nazeer, and P. M. Ameer. "An enhanced deterministic K-Means clustering algorithm for cancer subtype prediction from gene expression data." Computers in biology and medicine 91 (2017): 213-221.](https://www.sciencedirect.com/science/article/pii/S0010482517303402)
