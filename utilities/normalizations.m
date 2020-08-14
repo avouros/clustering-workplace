@@ -1,14 +1,14 @@
 function x = normalizations(x,option,varargin)
-%NORMALIZATIONS, various normalizations for vectors / matrices
-
+% NORMALIZATIONS, various normalizations for vectors / matrices
+% 
 % List of available normalizations:
 % - Center data around mean
 % - Sum to 1
 % - Euclidean or general vector norm, see MATLAB doc https://bit.ly/2AkEfX4
 % - z-score, see https://bit.ly/2l5QFXV
 % - Scale
-
-%INPUT:
+% 
+% INPUT:
 % x: vector or matrix: Each element of the vector or each column will be normalized.
 % option: 
 %  - 'mean':     center data around mean.
@@ -18,24 +18,24 @@ function x = normalizations(x,option,varargin)
 %  - 'z-score':  standarization, see https://bit.ly/2l5QFXV for more info
 %  - 'z-scorem': modified z-score, https://ibm.co/2VV6IJZ
 %  - 'scale':    scalling between an interval, default [0,1]
-
-%EXTRA INPUT (varargin): 
+% 
+% EXTRA INPUT (varargin): 
 % (1) For 'n-norm' option it specifies the power n.
 %     If omitted then n = 2 (Euclidean). 
 %     E.g. normalizations(x,'n-norm',5)
 % (2) For 'scale' option it specifies the upper and lower bounds.
 %     If omitted then [0 1] (min-max).
 %     E.g. normalizations(x,'scale',[1,10])
-
-%OUTPUT:
+% 
+% OUTPUT:
 % x: the normalized input vector or matrix.
-
-%NOTE:
+% 
+% NOTE:
 %    (1) In case of matrix, the operation will be performed per column.  
 %    (2) In case an input vector 1xN is provided then the input x will be
 %        transposed then normalized and then transoded back to 1xN.
-
-
+% 
+% 
 % Author:
 % Avgoustinos Vouros
 % avouros1@sheffield.ac.uk
