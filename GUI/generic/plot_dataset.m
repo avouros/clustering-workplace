@@ -11,11 +11,9 @@ function plot_dataset(x,y,plot_data,plotDim1,plotDim2,plotDim3,generate_new_figu
     cluster_centers = [];
     
     if nargin > 7
-        mnx = get(method_norm,'String');
         i = get(method_norm,'Value');    
-        num = str2double(mnx(i,:));
-        if isnan(num)
-            x = normalizations(x,mnx{i});
+        if isnan(str2double(i))
+            x = normalizations(x,i);
         else
             % Plot the initial centers
             centers = get(method_norm,'UserData');
@@ -26,17 +24,20 @@ function plot_dataset(x,y,plot_data,plotDim1,plotDim2,plotDim3,generate_new_figu
         cluster_centers = plot_centroids;
     end
 
-    dim1 = get(plotDim1,'String');
-    i = get(plotDim1,'Value');
-    dim1 = str2double(dim1(i,:));
+    dim1 = get(plotDim1,'Value');
+    if ~isnumeric(dim1)
+        dim1 = str2double(dim1);
+    end
     
-    dim2 = get(plotDim2,'String');
-    i = get(plotDim2,'Value');
-    dim2 = str2double(dim2(i,:));
-
-    dim3 = get(plotDim3,'String');
-    i = get(plotDim3,'Value');
-    dim3 = str2double(dim3(i,:));
+    dim2 = get(plotDim2,'Value');
+    if ~isnumeric(dim2)
+        dim2 = str2double(dim2);
+    end
+    
+    dim3 = get(plotDim3,'Value');
+    if ~isnumeric(dim3)
+        dim3 = str2double(dim3);
+    end
     
     K = unique(y);
     colors = color_fullhue(length(K));

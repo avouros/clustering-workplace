@@ -6,19 +6,12 @@ function gui_results(handles,eventdata)
         return
     end
     
-    % Get selected result
-    ev = eventdata.Source.String;
-    i = eventdata.Source.Value;
-    
     % Switch selected result
-    switch ev{i}
+    switch eventdata.Value
         case 'performance (internal)'
             gui_performance_internal(dat);
         case 'performance (external)'
-            try
-                gui_performance_external(dat);
-            catch
-            end
+            gui_performance_external(dat);
         case 'centroids'
             plotter_init_centers(dat);
         otherwise

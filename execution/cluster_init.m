@@ -16,17 +16,17 @@ function centers = cluster_init(x,k,method_centers,L,varargin)
             end
         case 'Kaufman'
             C = kaufman_init(x,k);
-        case 'ROBIN'
+        case 'ROBIN(S)'
             if ~exist('L','var') || isempty(L)     
                 C = ROBIN(x,k,10);
             else
-                C = ROBIN(x,k,10,'LOFCOM','lof_given',L);
+                C = ROBIN(x,k,10,'lof_given',L);
             end
-        case 'ROBIN-DETERM'
+        case 'ROBIN(D)'
             if ~exist('L','var') || isempty(L)     
                 C = ROBIN(x,k,10,'DETERMINISTIC');
             else
-                C = ROBIN(x,k,10,'LOFCOM','lof_given',L,'DETERMINISTIC');
+                C = ROBIN(x,k,10,'lof_given',L,'DETERMINISTIC',1);
             end       
         otherwise
             error('Wrong clustering algorithm');

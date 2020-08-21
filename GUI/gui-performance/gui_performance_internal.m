@@ -103,7 +103,11 @@ function gui_performance_internal_OpeningFcn(hObject, eventdata, handles, vararg
     for i = 1:nf
         if feats_t{i,3}
             str{i} = strcat('w_',num2str(i));
-            str_c{i} = feats_t{i,2};
+            tmp = cellfun(@(x) str2double(x), strsplit(feats_t{i,2},' '));
+            color = dec2hex(round(tmp.*255));
+            color = ['#',color(1,:),color(2,:),color(3,:)];
+            str_tmp = num2str(tmp); %str2num should be used to get the color
+            str_c{i} = strcat(['<html><body bgcolor="' color '" font color="' color '" text="' str_tmp '" width="80px">'], color);
         end
     end
     str = str(~cellfun('isempty',str));
