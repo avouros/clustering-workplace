@@ -4,9 +4,11 @@ This code was written for quick experimentation on different clustering techniqu
 
 - Write a wiki!
 
-- Create some tests.
+- Write some tests.
 
-- Release the full version.
+- Convert the rest of GUIDE to App Design.
+
+- Release full version.
 
 
 ## Notes
@@ -27,8 +29,8 @@ This code was written for quick experimentation on different clustering techniqu
 - **Random points**, pick random datapoints.
 - **First points**, pick the first datapoints of the dataset.
 - **K-Means++**, pick datapoints away from each other.
-- **ROBIN**, pick datapoints away from each other and also in dense regions of the feature space. Density is computed using the LOF score.
-- **ROBIN-DETERM (or D-ROBIN)**, original determinitic version of ROBIN.
+- **ROBIN(S)**, pick datapoints away from each other and also in dense regions of the feature space. Density is computed using the LOF score.
+- **ROBIN(D)**, original determinitic version of ROBIN.
 - **Kaufman**, pick datapoints away from each other close to dense regions of the feature space.
 - **Density K-Means++**, same as ROBIN but deterministic and uses another statistic to find density based on minimum spanning trees.
 
